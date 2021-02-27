@@ -1,0 +1,27 @@
+[
+    {
+      "model": "movies.actor",
+      "pk": 1,
+      "fields": {
+        "name": "Michael B. Jordan",
+        "age": 24
+      }
+    },
+    {
+      "model": "movies.actor",
+      "pk": 2,
+      "fields": {
+        "name": "Sylvester Stallone",
+        "age": 45
+      }
+    },
+    {
+      "model": "movies.movie",
+      "pk": 1,
+      "fields": {
+        "title": "Creed",
+        "actors": [1, 2],
+        "year": "2015"
+      }
+    }
+  ]
