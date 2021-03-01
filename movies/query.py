@@ -123,6 +123,22 @@ class UpdateMovie(graphene.Mutation):
             return UpdateMovie(ok=ok, movie=movie_instance)
         return UpdateMovie(ok=ok, movie=None)
 
+class DeleteActor(graphene.Mutation):
+    class Arguments:
+        name = graphene.String()
+        id = graphene.ID()
+    
+    ok = graphene.Boolean()
+    actor  = graphene.Field(ActorType)
+    
+    def mutate(self, info, id,  **kwargs):
+        name = kwargs.get('name')
+        actor_obj = Actor.objects.get(pk = id)
+        actor_obj.delete()
+        ok = True
+        return DeleteActor(ok = ok, actor = actor_obj)
+    
+    
 class Mutation(graphene.ObjectType):
     create_actor = CreateActor.Field()
     update_actor = UpdateActor.Field()
